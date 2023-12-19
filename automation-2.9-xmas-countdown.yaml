@@ -1,0 +1,63 @@
+alias: Epaper Tags - Xmas Advent Countdown
+description: "Count down the days till Christmas Day! Set the date of Christmas in the variable days_until_xmas. All images are pulled down from an external server (https://www.chunkymedia.co.uk) - keep you surprised! All images are royalty free from Pixabay. The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. Edit in YAML."
+trigger:
+  - platform: time
+    at: "00:05:00"
+action:
+  - service: open_epaper_link.drawcustom
+    data:
+      background: white
+      rotate: 270
+      payload:
+        - type: text
+          value: "{{ '' if days_until_xmas<=0 else days_until_xmas }}"
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 64
+          "y": >-
+            {{ 168 if days_until_xmas > 99 else 160 | int }}
+          size: >-
+            {{ 60 if days_until_xmas > 99 else 84 | int }}
+          color: red
+          anchor: mt
+          y_padding: 0
+          spacing: 2
+        - type: dlimg
+          url: >-
+            {% if days_until_xmas <= 31 %}
+              https://www.chunkymedia.co.uk/dither_it_epaper-xmas-{{ days_until_xmas | string }}.jpg
+            {% else %} 
+              https://www.chunkymedia.co.uk/dither_it_epaper-xmas-grinch.jpg
+            {% endif %}
+          x: 0
+          "y": 0
+          xsize: 128
+          ysize: "{{ 220 if days_until_xmas<=0 else 156 }}"
+          rotate: 0
+        - type: text
+          value: |-
+            {% if days_until_xmas > 0 %}
+              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'till"}} 
+            {% else %} 
+              Merry
+            {% endif %}
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 64
+          "y": 230
+          size: 24
+          color: black
+          anchor: mt
+        - type: text
+          value: Christmas
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 64
+          size: 24
+          color: black
+          anchor: mt
+    target:
+      entity_id:
+        - open_epaper_link.000002123456ABC
+mode: restart
+variables:
+  days_until_xmas: >-
+    {% set days_until = (strptime('12/25/2023', '%m/%d/%Y', today_at()) | as_local - today_at()).days | int %}
+    {{ 0 if days_until<=0 else days_until }}
