@@ -8,8 +8,6 @@ The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Chris
 
 Home Assistant and a working [OpenEpaper](https://openepaperlink.de/) setup, with HA Integration - https://github.com/jonasniesner/open_epaper_link_homeassistant
 
-(Currently there are only 7 days of images uploaded, so don't go testing, or it will error! I will upload all "25" days images soon!)
-
 ## Sensors/Integrations needed:
 
 * https://github.com/jonasniesner/open_epaper_link_homeassistant (Install via HACS)
