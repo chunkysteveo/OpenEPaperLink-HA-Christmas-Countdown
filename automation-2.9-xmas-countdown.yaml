@@ -23,7 +23,7 @@ action:
           spacing: 2
         - type: dlimg
           url: >-
-            {% if days_until_xmas <= 31 %}
+            {% if days_until_xmas <= 25 %}
               https://www.chunkymedia.co.uk/dither_it_epaper-xmas-{{ days_until_xmas | string }}.jpg
             {% else %} 
               https://www.chunkymedia.co.uk/dither_it_epaper-xmas-grinch.jpg
