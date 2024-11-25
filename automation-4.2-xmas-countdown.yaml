@@ -1,0 +1,131 @@
+alias: Epaper Tags - Xmas Advent Countdown 4.2 Inch Version
+description: >-
+  Count down the days till Christmas Day! All images are pulled down from an external server
+  (https://www.chunkymedia.co.uk) - to keep you surprised (don't look!)! All images are royalty
+  free from Pixabay, or AI generated. The text used is 'Days 'till Christmas', 'Day 'till
+  Christmas', and 'Merry Christmas' - adjust according to your local language. The Date day of
+  week and month should be pulled in via your local HA language, so shouldn't need editing(?!)
+  Edit in YAML!
+triggers:
+  - at: "00:01:00"
+    trigger: time
+conditions: []
+actions:
+  - data:
+      background: white
+      rotate: 0
+      dry-run: false
+      payload:
+        - type: dlimg
+          url: |-
+            {% if days_until_xmas <= 25 %}
+              https://www.chunkymedia.co.uk/epaper-xmas/dither_it_epaper-xmas-{{ days_until_xmas | string }}_42.jpg
+            {% else %} 
+              https://www.chunkymedia.co.uk/epaper-xmas/dither_it_epaper-xmas-grinch_42.jpg
+            {% endif %}
+          x: 0
+          "y": 0
+          xsize: 400
+          ysize: 300
+          rotate: 0
+        - type: text
+          value: "{{ now().strftime('%A') }}"
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 80
+          "y": 20
+          size: 24
+          color: black
+          anchor: mt
+          stroke_width: 1
+          stroke_fill: white
+        - type: text
+          value: "{{ today_at().day | int }}"
+          font: ../../media/GothamRnd-Bold.ttf
+          x: "{{ 87 if today_at().day | int > 10 else 82 | int }}"
+          "y": 50
+          size: 50
+          color: white
+          anchor: rt
+          align: right
+          y_padding: 0
+          spacing: 2
+          stroke_width: 2
+          stroke_fill: black
+        - type: text
+          value: |-
+            {%- set d = {1:'st',2:'nd',3:'rd'} %}
+            {%- set num =  today_at().day | int %}
+            {%- if 10 < num % 100 <= 20 %}
+              th
+            {%- else %}
+              {{ d.get(num % 10, 'th') }}
+            {%- endif %}
+          font: ../../media/GothamRnd-Bold.ttf
+          x: "{{ 90 if today_at().day | int > 10 else 85 | int }}"
+          "y": 48
+          size: 24
+          color: white
+          anchor: lt
+          align: left
+          y_padding: 0
+          spacing: 2
+          stroke_width: 2
+          stroke_fill: black
+        - type: text
+          value: "{{ now().strftime('%B') }}"
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 80
+          "y": 95
+          size: 24
+          color: black
+          anchor: mt
+          stroke_width: 1
+          stroke_fill: white
+        - type: text
+          value: "{{ '' if days_until_xmas<=0 else days_until_xmas }}"
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 80
+          "y": 215
+          size: "{{ 60 if days_until_xmas > 99 else 84 | int }}"
+          color: red
+          anchor: mb
+          y_padding: 0
+          spacing: 2
+          stroke_width: 2
+          stroke_fill: white
+        - type: text
+          value: |-
+            {% if days_until_xmas > 0 %}
+              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'till"}} 
+            {% else %} 
+              Merry
+            {% endif %}
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 80
+          "y": 230
+          size: 24
+          color: black
+          anchor: mt
+          stroke_width: 1
+          stroke_fill: white
+        - type: text
+          value: Christmas
+          font: ../../media/GothamRnd-Bold.ttf
+          x: 80
+          y_padding: 5
+          size: 24
+          color: black
+          anchor: mt
+          stroke_width: 1
+          stroke_fill: white
+    target:
+      entity_id:
+        - open_epaper_link.UPDATE_YOUR_TAG_MAC_HERE
+    action: open_epaper_link.drawcustom
+mode: restart
+variables:
+  days_until_xmas: >-
+    {% set days_until = (today_at().replace(day=25, month=12) | as_local -
+    today_at()).days | int %} {% if days_until < 0 %}
+    {{(today_at().replace(day=25, month=12, year=now().year+1) | as_local -
+    today_at()).days | int }} {% else %} {{days_until}} {% endif %} 
