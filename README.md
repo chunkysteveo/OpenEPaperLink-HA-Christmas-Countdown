@@ -5,6 +5,7 @@ Count down the days till Christmas Day! All images are pulled down from an exter
 
 <img src="20241125_155254_resized.jpg" width="50%" alt="Epaper Tag using the Christmas Countdown - 4.2 version!">
 
+The 4.2" version is more art based and will show the current data, days untill Christmas, and a full width Christmas themes background.
 
 The date of Christmas is set in the variable `days_until_xmas` and shouldn't need altering year on year. 
 The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. Edit automation in YAML.
