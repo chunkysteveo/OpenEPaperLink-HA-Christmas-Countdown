@@ -3,7 +3,7 @@ Count down the days till Christmas Day! All images are pulled down from an exter
 
 <img src="20231219_091339_resized.jpg" width="50%" alt="Epaper Tag using the Christmas Countdown!">
 
-<img src="20231219_091339_resized.jpg" width="50%" alt="Epaper Tag using the Christmas Countdown - 4.2 version!">
+<img src="20241125_155254_resized.jpg" width="50%" alt="Epaper Tag using the Christmas Countdown - 4.2 version!">
 
 
 The date of Christmas is set in the variable `days_until_xmas` and shouldn't need altering year on year. 
