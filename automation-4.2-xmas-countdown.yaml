@@ -4,7 +4,7 @@ description: >-
   (https://www.chunkymedia.co.uk) - to keep you surprised (don't look!)! All images are royalty
   free from Pixabay, or AI generated. The text used is 'Days 'till Christmas', 'Day 'till
   Christmas', and 'Merry Christmas' - adjust according to your local language. The Date day of
-  week and month should be pulled in via your local HA language, so shouldn't need editing(?!)
+  week and month (4.2) should be pulled in via your local HA language, so shouldn't need editing.
   Edit in YAML!
 triggers:
   - at: "00:01:00"
