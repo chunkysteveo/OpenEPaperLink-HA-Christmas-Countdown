@@ -8,7 +8,10 @@ Count down the days till Christmas Day! All images are pulled down from an exter
 The 4.2" version is more art based and will show the current data, days untill Christmas, and a full width Christmas themes background.
 
 The date of Christmas is set in the variable `days_until_xmas` and shouldn't need altering year on year. 
-The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. Edit automation in YAML.
+The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas'. Days of the week and months (4.2" version) can be found in the 
+variables section - adjust according to your local language. 
+
+**Edit automation in YAML.**
 
 Home Assistant and a working [OpenEpaper](https://openepaperlink.de/) setup, with HA Integration - https://github.com/jonasniesner/open_epaper_link_homeassistant
 
@@ -22,7 +25,10 @@ Home Assistant and a working [OpenEpaper](https://openepaperlink.de/) setup, wit
 
 ## Customizing
 ### Date
-The date of Christmas is set in the variable `days_until_xmas` and shouldn't need altering year on year. 
+The date of Christmas is set in the variable `days_until_xmas` and shouldn't need altering year on year. If you celebrate Christmas on 24th (Christmas Eve) then 
+adjust the calculation in the variable section where `day=25` and set to `day=24`, found twice.
+
+If you don't use e.g. 1st, 2nd, 3rd, 4th date style (4.2" version) - add a `visible: false` for that text, around line 56, to hide it, and adjust your x positioning of the date number to suit.
 
 ### Text
-The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. The Date day of week and month (4.2" version) should be pulled in via your local HA language, so shouldn't need editing.
+The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. Days of the week and months (4.2" version) can be found in the variables section - adjust according to your local language. 
