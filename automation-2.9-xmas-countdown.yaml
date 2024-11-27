@@ -1,5 +1,5 @@
 alias: Epaper Tags - Xmas Advent Countdown
-description: "Count down the days till Christmas Day! The date of Christmas is set in the variable days_until_xmas and shouldn't need altering year on year. All images are pulled down from an external server (https://www.chunkymedia.co.uk) - keep you surprised! All images are royalty free from Pixabay. The text used is 'Days 'till Christmas', 'Day 'till Christmas', and 'Merry Christmas' - adjust according to your local language. Edit in YAML."
+description: "Count down the days till Christmas Day! The date of Christmas is set in the variable days_until_xmas and shouldn't need altering year on year. All images are pulled down from an external server (https://www.chunkymedia.co.uk) - keep you surprised! All images are royalty free from Pixabay. The text used is 'Days 'til Christmas', 'Day 'til Christmas', and 'Merry Christmas' - adjust according to your local language. Edit in YAML."
 trigger:
   - platform: time
     at: "00:05:00"
@@ -36,7 +36,7 @@ action:
         - type: text
           value: |-
             {% if days_until_xmas > 0 %}
-              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'till"}} 
+              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'til"}} 
             {% else %} 
               Merry
             {% endif %}
