@@ -1,5 +1,5 @@
 # OpenEPaperLink-HA-Christmas-Countdown
-Count down the days till Christmas Day! All images are pulled down from an external server at https://www.chunkymedia.co.uk - to keep you surprised (don't look!)!  
+Count down the days till Christmas Day! All images are pulled down from an external server at https://www.chunkymedia.co.uk - to keep you surprised, don't look!! **FYI - These images are safe for family/kids/work etc - not that kind of surprise!!**  
 
 <img src="20231219_091339_resized.jpg" width="50%" alt="Epaper Tag using the Christmas Countdown!">
 
