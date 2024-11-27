@@ -2,7 +2,7 @@ alias: Epaper Tags - Xmas Advent Countdown 4.2 Inch Version
 description: >-
   Count down the days till Christmas Day! All images are pulled down from an external server
   (https://www.chunkymedia.co.uk) - to keep you surprised (don't look!)! All images are royalty
-  free from Pixabay, or AI generated (apart from Grinch!). The text used is 'Days 'till Christmas', 'Day 'till
+  free from Pixabay, or AI generated (apart from Grinch!). The text used is 'Days 'til Christmas', 'Day 'til
   Christmas', and 'Merry Christmas'. Days of the week and months (4.2 version) can be found in the 
   variables section below - adjust according to your local language. 
   Edit in YAML!
@@ -96,7 +96,7 @@ actions:
         - type: text
           value: |-
             {% if days_until_xmas > 0 %}
-              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'till"}} 
+              {{ ("Days" if days_until_xmas > 1 else "Day") | string + " 'til"}} 
             {% else %} 
               Merry
             {% endif %}
