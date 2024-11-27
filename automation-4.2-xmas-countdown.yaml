@@ -2,9 +2,9 @@ alias: Epaper Tags - Xmas Advent Countdown 4.2 Inch Version
 description: >-
   Count down the days till Christmas Day! All images are pulled down from an external server
   (https://www.chunkymedia.co.uk) - to keep you surprised (don't look!)! All images are royalty
-  free from Pixabay, or AI generated. The text used is 'Days 'till Christmas', 'Day 'till
-  Christmas', and 'Merry Christmas' - adjust according to your local language. The Date day of
-  week and month (4.2) should be pulled in via your local HA language, so shouldn't need editing.
+  free from Pixabay, or AI generated (apart from Grinch!). The text used is 'Days 'till Christmas', 'Day 'till
+  Christmas', and 'Merry Christmas'. Days of the week and months (4.2 version) can be found in the 
+  variables section below - adjust according to your local language. 
   Edit in YAML!
 triggers:
   - at: "00:01:00"
@@ -29,7 +29,7 @@ actions:
           ysize: 300
           rotate: 0
         - type: text
-          value: "{{ now().strftime('%A') }}"
+          value: "{{ weekdays[now().weekday()] }}"
           font: ../../media/GothamRnd-Bold.ttf
           x: 80
           "y": 20
@@ -72,7 +72,7 @@ actions:
           stroke_width: 2
           stroke_fill: black
         - type: text
-          value: "{{ now().strftime('%B') }}"
+          value: "{{ months[now().month -1] }}"
           font: ../../media/GothamRnd-Bold.ttf
           x: 80
           "y": 95
@@ -129,3 +129,24 @@ variables:
     today_at()).days | int %} {% if days_until < 0 %}
     {{(today_at().replace(day=25, month=12, year=now().year+1) | as_local -
     today_at()).days | int }} {% else %} {{days_until}} {% endif %} 
+  months:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+  weekdays:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    - Sunday    
